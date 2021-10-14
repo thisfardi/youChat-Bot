@@ -1,0 +1,5 @@
+# GET http://localhost:2023/hi HTTP/1.1
+
+# GET http://localhost:2023/ HTTP/1.1
+
+GET http://localhost:2023/err HTTP/1.1

@@ -1,27 +1,51 @@
-/**
- * @param {function} database dependse injection the database module
- * @param {function} core dependse injection express
- * @returns {function} express application
- */
-function app(database, core) {
-
-    /*
-        Handel json data
-    */
-    express.use(core.json());
-    express.use(core.urlencoded({
-        extended: true
-    }));
+const expressCore = require("express"),
+      rate_limit = require("express-rate-limit");
 
     /*
         express application
     */
-    const express = core();
+    const express = expressCore();
+
+    /*
+        disable x-powerd-by
+    */
+    express.disable("x-powered-by");
+
+    /*
+        configure rate limit
+    */
+    const rateLimiter = rate_limit({
+        windowMs: 25 * 60 * 1000,
+        max: 20
+    });
+
+    /*
+        enable rate limit
+    */
+    express.use(rateLimiter);
+
+    /*
+        Handel json data
+    */
+    express.use(expressCore.json());
+    express.use(expressCore.urlencoded({
+        extended: true
+    }));
 
     /*
         Static Files
     */
-    express.use("/public", core.static("./public"));
+    express.use("/public", expressCore.static("./public"));
+
+    /*
+        this endpoints is for testing the server
+    */
+    express.get('/' , (req, res , next) => {
+        res.status(200).send("nothing")
+    })
+    express.get('/err' , (req, res , next) => {
+        throw Error("database error")
+    })
 
     /*
         unhandeled requests
@@ -36,6 +60,16 @@ function app(database, core) {
     });
 
     /*
+        set views directory
+    */
+    express.set("views", "./views");
+
+    /*
+        setup the view engine
+    */
+    express.set("view engine", "ejs");
+
+    /*
         error handeler
     */
     express.use(function (err, req, res) {
@@ -45,6 +79,5 @@ function app(database, core) {
             data: err
         });
     });
-};
 
-module.exports = app;
+module.exports = express;
