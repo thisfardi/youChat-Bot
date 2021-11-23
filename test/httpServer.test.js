@@ -1,5 +1,5 @@
-const request = require("supertest"),
-    Server = require("../server");
+import request from "supertest";
+import Server from "../server";
 
 
 
