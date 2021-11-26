@@ -27,7 +27,7 @@ app.use("/public", express.static("./public"));
 /*
     set views directory
 */
-app.set("views", "./views");
+app.set("views", "./src/views");
 
 /*
     setup the view engine
