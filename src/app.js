@@ -25,6 +25,16 @@ app.disable("x-powered-by");
 app.use("/public", express.static("./public"));
 
 /*
+    set views directory
+*/
+app.set("views", "./views");
+
+/*
+    setup the view engine
+*/
+app.set("view engine", "ejs");
+
+/*
     this endpoints is for testing the server
 */
 app.get('/', function (req, res, next) {
@@ -38,15 +48,5 @@ app.get('/err', function (req, res, next) {
     add all the routers
 */
 app.use("/", pagesRouter);
-
-/*
-    set views directory
-*/
-app.set("views", "./views");
-
-/*
-    setup the view engine
-*/
-app.set("view engine", "ejs");
 
 module.exports = app;
