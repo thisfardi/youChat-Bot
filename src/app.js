@@ -1,83 +1,52 @@
-const expressCore = require("express"),
-      rate_limit = require("express-rate-limit");
+const express = require("express");
+const pagesRouter = require("./routers/pages.router.js");
 
-    /*
-        express application
-    */
-    const express = expressCore();
+/*
+    express application
+*/
+const app = express();
 
-    /*
-        disable x-powerd-by
-    */
-    express.disable("x-powered-by");
+/*
+    Handel json data
+*/
+app.use(express.json());
+app.use(express.urlencoded({
+    extended: true
+}));
 
-    /*
-        configure rate limit
-    */
-    const rateLimiter = rate_limit({
-        windowMs: 25 * 60 * 1000,
-        max: 20
-    });
+/*
+    disable x powered by
+*/
+app.disable("x-powered-by");
 
-    /*
-        enable rate limit
-    */
-    express.use(rateLimiter);
+/*
+    Static Files
+*/
+app.use("/public", express.static("./public"));
 
-    /*
-        Handel json data
-    */
-    express.use(expressCore.json());
-    express.use(expressCore.urlencoded({
-        extended: true
-    }));
+/*
+    this endpoints is for testing the server
+*/
+app.get('/', function (req, res, next) {
+    res.status(200).send("nothing")
+})
+app.get('/err', function (req, res, next) {
+    next(err);
+})
 
-    /*
-        Static Files
-    */
-    express.use("/public", expressCore.static("./public"));
+/*
+    add all the routers
+*/
+app.use("/", pagesRouter);
 
-    /*
-        this endpoints is for testing the server
-    */
-    express.get('/' , (req, res , next) => {
-        res.status(200).send("nothing")
-    })
-    express.get('/err' , (req, res , next) => {
-        throw Error("database error")
-    })
+/*
+    set views directory
+*/
+app.set("views", "./views");
 
-    /*
-        unhandeled requests
-    */
-    express.use("*", (req, res) => {
-        //send 404 response
-        res.status(404).json({
-            error: true,
-            message: 'Not Found!',
-            data: []
-        });
-    });
+/*
+    setup the view engine
+*/
+app.set("view engine", "ejs");
 
-    /*
-        set views directory
-    */
-    express.set("views", "./views");
-
-    /*
-        setup the view engine
-    */
-    express.set("view engine", "ejs");
-
-    /*
-        error handeler
-    */
-    express.use(function (err, req, res) {
-        res.status(500).json({
-            error: true,
-            message: `${req.url} \n Server Error `,
-            data: err
-        });
-    });
-
-module.exports = express;
+export default app;
