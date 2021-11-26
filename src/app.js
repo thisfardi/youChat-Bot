@@ -49,4 +49,4 @@ app.set("views", "./views");
 */
 app.set("view engine", "ejs");
 
-export default app;
+module.exports = app;
