@@ -1,10 +1,22 @@
 const express = require("express");
 const pagesRouter = require("./routers/pages.router.js");
+const session = require("express-session");
 
 /*
     express application
 */
 const app = express();
+
+/*
+    enable sessions
+*/
+app.use(session({
+    secret: "chatbot",
+    resave: false,
+    cookie: {secure: true,
+    sameSite: true},
+    saveUninitialized: true
+}));
 
 /*
     Handel json data
@@ -13,6 +25,8 @@ app.use(express.json());
 app.use(express.urlencoded({
     extended: true
 }));
+
+app.use(require("express-status-monitor")())
 
 /*
     disable x powered by
