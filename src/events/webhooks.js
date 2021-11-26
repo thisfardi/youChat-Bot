@@ -1,4 +1,4 @@
-import events from "./index.js";
+const events = require("./index.js");
 const {
     webhooks
 } = events;

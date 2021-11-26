@@ -1,5 +1,5 @@
-import express, { json, urlencoded } from "express";
-import pagesRouter from "./routers/pages.router.js";
+const express = require("express");
+const pagesRouter = require("./routers/pages.router.js");
 
 /*
     express application
@@ -9,10 +9,15 @@ const app = express();
 /*
     Handel json data
 */
-app.use(json());
-app.use(urlencoded({
+app.use(express.json());
+app.use(express.urlencoded({
     extended: true
 }));
+
+/*
+    disable x powered by
+*/
+app.disable("x-powered-by");
 
 /*
     Static Files

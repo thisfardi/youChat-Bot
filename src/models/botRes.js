@@ -1,8 +1,8 @@
-import sequelize from "../database/connection";
-import { DataTypes } from "sequelize";
-import clientMsg from "./clientMsg";
-import media from "./media";
-import users from "./users";
+const sequelize = require("../database/connection");
+const { DataTypes } = require("sequelize");
+const users = require("./users");
+const clientMsg = require("./clientMsg");
+const media = require("./media");
 
 const botResponse = sequelize.define("bot_res", {
     id: {
@@ -41,4 +41,4 @@ botResponse.sync({
     force: false
 });
 
-export default botResponse;
+module.exports = botResponse;

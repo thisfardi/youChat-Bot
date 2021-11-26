@@ -1,7 +1,7 @@
-import { createServer } from "http";
-import app from "./src/app.js";
-import { PORT } from "./src/config/config.js";
-import rate_limit from "express-rate-limit";
+const { createServer } = require("http");
+const app = require("./src/app.js");
+const { PORT } = require("./src/config/config.js");
+const rate_limit = require("express-rate-limit");
 
 
 /*
@@ -55,4 +55,4 @@ app.use( (err, req, res, next) => {
 */
 http_server.listen(PORT);
 
-export default http_server;
+module.exports = http_server;

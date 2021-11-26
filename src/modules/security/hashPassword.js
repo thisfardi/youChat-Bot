@@ -1,4 +1,4 @@
-import { genSalt, hash } from "bcryptjs";
+const {genSalt, hash} = require("bcryptjs");
 
 function genrateSalt(callback) {
     genSalt( (err, salt) => {
@@ -10,7 +10,7 @@ function genrateSalt(callback) {
     })
 }
 
-export default (orignalPassword, callback) => {
+module.exports =  (orignalPassword, callback) => {
 
     genrateSalt( (err, salt) => {
 

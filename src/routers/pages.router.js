@@ -1,7 +1,7 @@
-import { Router as pagesRouter } from 'express';
+const pagesRouter = require("express").Router();
 
 pagesRouter().get("/home", function (req, res, next) {
     res.status(200).render("index");
 });
 
-export default pagesRouter;
+module.exports = pagesRouter;

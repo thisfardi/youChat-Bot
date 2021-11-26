@@ -1,6 +1,6 @@
-import { verify } from "jsonwebtoken";
+const { verify } = require("jsonwebtoken");
 
-export default (token, secret, callback) => {
+module.exports =  (token, secret, callback) => {
 
     verify(token, secret, {
         complete: true

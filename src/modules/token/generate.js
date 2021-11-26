@@ -1,6 +1,5 @@
-import { sign } from "jsonwebtoken";
-
-export default (secret, data, issuer, callback) => {
+const {sign} = require("jsonwebtoken");
+module.exports =  (secret, data, issuer, callback) => {
 
     sign(data, secret, {
         expiresIn: "7d",

@@ -1,5 +1,5 @@
-import sequelize from "../database/connection";
-import { DataTypes } from "sequelize";
+const sequelize = require("../database/connection");
+const { DataTypes } = require("sequelize");
 
 const permissions = sequelize.define("permissions", {
     id: {
@@ -49,4 +49,4 @@ permissions.sync({
     force: false
 });
 
-export default permissions;
+module.exports = permissions;

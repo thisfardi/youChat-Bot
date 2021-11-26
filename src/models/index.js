@@ -1,15 +1,17 @@
-import users from "./users";
-import permissions from "./permissions";
-import media from "./media";
-import webhooks from "./webhooks";
-import botResponse from "./botRes";
-import clientMsg from "./clientMsg";
-import botAutoResponse from "./botAutoResponse";
+const users = require("./users");
+const media = require("./media");
+const permissions = require("./permissions");
+const webhooks = require("./webhooks");
+const botResponse = require("./botRes");
+const clientMsg = require("./clientMsg");
+const botAutoResponse = require("./botAutoResponse");
 
-export const usersModel = users;
-export const permissionsModel = permissions;
-export const mediaModel = media;
-export const webhooksModel = webhooks;
-export const botResponseModel = botResponse;
-export const clientMsgModel = clientMsg;
-export const botAutoResponseModel = botAutoResponse;
+module.exports = {
+    usersModel: users,
+    permissionsModel: permissions,
+    mediaModel: media,
+    webhooksModel: webhooks,
+    botResponseModel: botResponse,
+    clientMsgModel: clientMsg,
+    botAutoResponseModel: botAutoResponse
+}

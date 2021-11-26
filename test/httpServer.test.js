@@ -1,7 +1,5 @@
-import request from "supertest";
-import Server from "../server";
-
-
+const request = require("supertest");
+const Server = require("../server");
 
 describe('test the web server', () => {
     it('should response with 404', async () => {

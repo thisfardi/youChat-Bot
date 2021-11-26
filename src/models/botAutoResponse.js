@@ -1,7 +1,7 @@
-import sequelize from "../database/connection";
-import { DataTypes } from "sequelize";
-import users from "./users";
-import media from "./media";
+const sequelize = require("../database/connection");
+const { DataTypes } = require("sequelize");
+const users = require("./users");
+const media = require("./media");
 
 const botAutoRes = sequelize.define("autoRes", {
     id: {
@@ -35,4 +35,4 @@ botAutoRes.sync({
     force: false
 });
 
-export default botAutoRes;
+module.exports =  botAutoRes;

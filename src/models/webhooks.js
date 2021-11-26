@@ -1,6 +1,6 @@
-import sequelize from "../database/connection";
-import users from "./users";
-import { DataTypes } from "sequelize";
+const sequelize = require("../database/connection");
+const { DataTypes } = require("sequelize");
+const users = require("./users");
 
 var webhooks = sequelize.define("webhooks", {
     id: {
@@ -37,4 +37,4 @@ webhooks.sync({
     force: false
 });
 
-export default webhooks;
+module.exports = webhooks;

@@ -1,6 +1,6 @@
-import sequelize from "../database/connection";
-import { DataTypes } from "sequelize";
-import users from "./users";
+const sequelize = require("../database/connection");
+const { DataTypes } = require("sequelize");
+const users = require("./users");
 
 const media = sequelize.define("media", {
     id: {
@@ -36,4 +36,4 @@ media.sync({
     force: false
 });
 
-export default media;
+module.exports =  media;

@@ -1,9 +1,9 @@
-export const PORT = process.env.port || 2022;
-export const twilio = {
+module.exports.PORT = process.env.port || 2022;
+module.exports.twilio = {
     accountSid: "",
     authToken: ""
 };
-export const TestDB = {
+module.exports.TestDB = {
     // Test Database
     database: "uchat",
     user: "root",
@@ -18,10 +18,10 @@ export const TestDB = {
         idle: 10000
     }
 };
-export const security = {
+module.exports.security = {
     token_secret: "TestCode"
 };
-export const ProductionDB = {
+module.exports.ProductionDB = {
     // Production Database
     database: "uchat",
     user: "root",

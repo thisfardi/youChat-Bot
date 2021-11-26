@@ -1,6 +1,7 @@
-import { EventEmitter } from "events";
+
+const {EventEmitter} = require("events");
 const webhooks = new EventEmitter();
 
-export default {
+module.exports = {
     webhooks
 }

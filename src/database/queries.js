@@ -5,12 +5,12 @@
  * if you think it could be better than this you can change it and open a pull request or just tell me and I'll change it
  * monzersmiledev@outlook.com
  */
-import { usersModel } from "../models/index";
+const { usersModel } = require("../models/index");
 
-export default class Queries {
+module.exports ={
 
 
-    getAllUsers(callback) {
+    getAllUsers: (callback) => {
 
         usersModel.findAll().then((result) => {
             callback(null, result);

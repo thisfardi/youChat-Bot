@@ -1,5 +1,5 @@
-import sequelize from "../database/connection";
-import { DataTypes } from "sequelize";
+const sequelize = require("../database/connection");
+const { DataTypes } = require("sequelize");
 
 const clientMsg = sequelize.define("clinetMsg", {
     id: {
@@ -34,4 +34,4 @@ clientMsg.sync({
     force: false
 });
 
-export default clientMsg;
+module.exports = clientMsg;

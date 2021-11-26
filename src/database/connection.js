@@ -1,13 +1,11 @@
-import {
-   Sequelize
-} from "sequelize";
-import {
+const {
    TestDB
    // ,ProductionDB
-} from "../config/config.js";
-const
+} = require("../config/config.js");
+const Sequelize = require("sequelize");
+
 // Test Database
-{
+const {
    database,
    user,
    password,
@@ -30,4 +28,4 @@ const sequelize = new Sequelize(database, user, password, {
    pool
 });
 
-export default sequelize;
+module.exports = sequelize;

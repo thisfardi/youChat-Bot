@@ -1,6 +1,6 @@
-import { compare } from "bcryptjs";
+const { compare } = require("bcryptjs");
 
-export default (originalPassword, hashedPassword, callback) => {
+module.exports =  (originalPassword, hashedPassword, callback) => {
 
     compare(originalPassword, hashedPassword, (err, state) => {
 
