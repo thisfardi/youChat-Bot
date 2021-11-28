@@ -4,7 +4,7 @@ const users = require("./users");
 const clientMsg = require("./clientMsg");
 const media = require("./media");
 
-const botResponse = sequelize.define("bot_res", {
+const botResponse = sequelize.define("bot_resonse", {
     id: {
         type: DataTypes.UUID,
         primaryKey: true,

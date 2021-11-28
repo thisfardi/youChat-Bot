@@ -10,24 +10,25 @@ function genrateSalt(callback) {
     })
 }
 
-module.exports =  (orignalPassword, callback) => {
+module.exports =  (orignalPassword) => {
+    return new Promise((resolve, reject) => {
+        genrateSalt( (err, salt) => {
 
-    genrateSalt( (err, salt) => {
-
-        if (err) {
-            callback(new Error(err));
-        } else {
-
-            hash(orignalPassword, salt, (err, hash) => {
-
-                if (err) {
-                    callback(new Error(err));
-                } else {
-                    callback(null, hash);
-                }
-
-            });
-        }
+            if (err) {
+                reject(err);
+            } else {
+    
+                hash(orignalPassword, salt, (err, hash) => {
+    
+                    if (err) {
+                        reject(err);
+                    } else {
+                        resolve(hash);
+                    }
+    
+                });
+            }
+        });
     });
 
 }

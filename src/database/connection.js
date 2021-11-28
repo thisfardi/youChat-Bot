@@ -2,7 +2,9 @@ const {
    TestDB
    // ,ProductionDB
 } = require("../config/config.js");
-const Sequelize = require("sequelize");
+const {
+   Sequelize
+} = require("sequelize");
 
 // Test Database
 const {

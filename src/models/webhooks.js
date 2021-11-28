@@ -2,7 +2,7 @@ const sequelize = require("../database/connection");
 const { DataTypes } = require("sequelize");
 const users = require("./users");
 
-var webhooks = sequelize.define("webhooks", {
+var webhooks = sequelize.define("webhook", {
     id: {
         type: DataTypes.UUID,
         primaryKey: true,

@@ -3,7 +3,7 @@ const { DataTypes } = require("sequelize");
 const users = require("./users");
 const media = require("./media");
 
-const botAutoRes = sequelize.define("autoRes", {
+const botAutoRes = sequelize.define("autoResponse", {
     id: {
         type: DataTypes.STRING,
         primaryKey: true,

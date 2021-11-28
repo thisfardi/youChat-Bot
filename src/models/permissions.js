@@ -1,7 +1,9 @@
 const sequelize = require("../database/connection");
-const { DataTypes } = require("sequelize");
+const {
+    DataTypes
+} = require("sequelize");
 
-const permissions = sequelize.define("permissions", {
+const permissions = sequelize.define("permission", {
     id: {
         type: DataTypes.UUID,
         primaryKey: true,

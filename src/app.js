@@ -26,6 +26,9 @@ app.use(express.urlencoded({
     extended: true
 }));
 
+/*
+    Enable APM
+*/
 app.use(require("express-status-monitor")())
 
 /*

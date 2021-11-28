@@ -2,7 +2,7 @@ const sequelize = require("../database/connection");
 const { DataTypes } = require("sequelize");
 const permissions = require("./permissions");
 
-const users = sequelize.define("users", {
+const users = sequelize.define("user", {
     id: {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV1,
